@@ -106,6 +106,7 @@
 		padding-left: .26rem;
 		line-height: .8rem;
 		color: #212121;
+		background:#f5f5f5;
 	}
 	.scenery-list-prod{
 		position: relative;
