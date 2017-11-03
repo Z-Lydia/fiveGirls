@@ -8,7 +8,7 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+module.exports = {//定义整个入口文件
   entry: {
     app: './src/main.js'
   },

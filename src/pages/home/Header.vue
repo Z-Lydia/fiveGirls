@@ -1,6 +1,6 @@
 <template>
   	<header class="header">
-  		<a class="header-left"><</a>
+  		<a class="header-left iconfont icon-return"></a>
   		<div class="header-title">
   			<a class="linkarea" title="北京">
   				<span class="single-line">输入城市/景点/游玩主题</span>
@@ -27,17 +27,16 @@ export default {}
 	.header-left{
 		float:left;
 		line-height:.88rem;
-		width:.4rem;
 		color:#fff;
-		display:block;
-		padding: 0 .2rem;
-		font-size:.4rem
+	}
+	.header-left.iconfont{
+		font-size:.6rem
 	}
 	.header-title{
 		position:absolute;
 		height:.6rem;
 		background:#fff;
-		left:.6rem;
+		left:.7rem;
 		right:1.36rem;
 		margin-top:.14rem;
 		border-radius:.04rem;
