@@ -2,6 +2,7 @@
   	<div>
 		<home-header />
 		<week-swiper />
+		<home-category/>
 		<home-location />
 		<home-scenery />
 		<week-list />  	
@@ -13,6 +14,7 @@
 import HeaderComponent from "./Header";
 import SceneryComponent from "./Scenery";
 import SwiperComponent from "./Swiper";
+import CategoryComponent from "./Category";
 import LocationComponent from "./Location";
 import WeekListComponent from "./WeekList";
 
@@ -21,6 +23,7 @@ export default {
 		"home-header": HeaderComponent,
 		"home-scenery": SceneryComponent,
 		"week-swiper": SwiperComponent,
+		"home-category":CategoryComponent,
 		"home-location":LocationComponent,
 		"week-list": WeekListComponent
 	}
