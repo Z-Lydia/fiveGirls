@@ -44,7 +44,9 @@ export default {}
 		line-height:.6rem;
 	}
 	.header-title a{
-		color:#ccc
+		color:#ccc;
+		position: relative;
+		padding-right: .3rem;
 	}
 	.header-right{
 		float:right;
@@ -54,5 +56,23 @@ export default {}
 	}
 	.header-right a{
 		color:#fff;
+	}
+	.nav-city{
+		width:1rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		display: inline-block;
+	}
+	.nav-city::after{
+		content: "\0020";
+		position: absolute;	
+		top: .4rem;
+		right: .14rem;
+		width: 0;
+		height: 0;
+		border: .1rem solid transparent;
+		border-top: .1rem solid #fff;
+		margin-left: .2rem;
 	}
 </style>
