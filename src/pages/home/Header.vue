@@ -18,10 +18,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.header{
 		height: .88rem;
 		background: #00bcd4;
+		overflow: hidden;
 	}
 	.header-left{
 		float: left;
