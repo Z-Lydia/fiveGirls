@@ -1,4 +1,3 @@
-//<router-view/>显示当前路由的组件
 <template>
   <div id="app">
     <router-view/>
@@ -11,5 +10,6 @@ export default {}
 
 <style>
 	@import "./reset.css";
-	@import "./iconfont/iconfont.css"
+	@import "./iconfont/iconfont.css";
+	@import "../../node_modules/swiper/dist/css/swiper.css";	
 </style>
