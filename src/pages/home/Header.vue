@@ -1,70 +1,66 @@
 <template>
-  	<header class="header">
-  		<a class="header-left iconfont icon-return"></a>
-  		<div class="header-title">
-  			<a class="linkarea" title="北京">
-  				<span class="single-line">输入城市/景点/游玩主题</span>
-  			</a>
-  		</div>
-  		<div class="header-right">
-  			<a title="城市选择" class="linkarea">
-  				<span class="nav-city">北京</span>
-  			</a>
-  		</div>
-  	</header>
+	<header class="header">
+		<div class="header-left iconfont icon-return"></div>
+		<div class="header-title">
+			输入城市/景点/游玩主题
+		</div>
+		<div class="header-right">
+			<div class="header-city-wrapper">
+				<span class="header-city">北京</span>
+			</div>
+		</div>
+	</header>
 </template>
 
 <script>
-export default {}
+	export default{
+		
+	}
 </script>
 
 <style>
 	.header{
-		height:.88rem;
-		background:#00bcd4;
-		position:relative
+		height: .88rem;
+		background: #00bcd4;
 	}
 	.header-left{
-		float:left;
-		line-height:.88rem;
-		color:#fff;
-	}
-	.header-left.iconfont{
-		font-size:.6rem
+		float: left;
+		width: .4rem;
+		padding: 0 .1rem;
+		line-height: .88rem;
+		color: #fff;
+		font-size: .5rem;
 	}
 	.header-title{
-		position:absolute;
-		height:.6rem;
-		background:#fff;
-		left:.7rem;
-		right:1.36rem;
-		margin-top:.14rem;
-		border-radius:.04rem;
-		text-indent:.2rem;
-		line-height:.6rem;
+		position: absolute;
+		left:.8rem;
+		right: 1.28rem;
+		top: .14rem;
+		line-height: .6rem;
+		background: #fff;
+		border-radius: .06rem;
+		padding-left: .2rem;
+		color: #999;
 	}
-	.header-title a{
-		color:#ccc;
+	.header-right{
+		float: right;
+		width: 1.28rem;
+		line-height: .88rem;
+		text-align: center;
+		color: #fff;
+	}
+	.header-city-wrapper{
 		position: relative;
 		padding-right: .3rem;
 	}
-	.header-right{
-		float:right;
-		line-height:.88rem;
-		width:1.32rem;
-		text-align:center
-	}
-	.header-right a{
-		color:#fff;
-	}
-	.nav-city{
+	.header-city{
 		width:1rem;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		display: inline-block;
 	}
-	.nav-city::after{
+	.header-city::after{
 		content: "\0020";
 		position: absolute;	
 		top: .4rem;
