@@ -17,7 +17,7 @@
 				<span>热门搜索</span>
 				<span class="hot-change history-del">
 					<span class="iconfont icon-huanyipi"></span>
-					<span>换一换</span>
+					<span @click="handlechangeClick">换一换</span>
 				</span>
 			</div>
 			<div class="hot-content">
@@ -27,8 +27,8 @@
 							<span class="iconfont icon-iconset0210"></span>
 						</div>
 					</div>
-					<div class="hot-spot-list">
-						<ul>
+					<div class="hot-spot-list" ref="spot">
+						<ul >
 							<li class="spotlistItem" is="spot-list" v-for="item in spotarr" :item="item"></li>
 						</ul>
 					</div>
@@ -61,7 +61,7 @@
 	
 	export default {
 		data: function(){
-			var spotarr = ["天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡"];
+			var spotarr = ["天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡","天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡"];
 			var cityarr = [ "西安","南京","深圳","宁波","厦门","重庆","成都","天津" ];
 			var show = false;
 			return {
@@ -73,7 +73,22 @@
 		components:{
 			"spot-list":spotList
 		},
+		mounted:function(){
+			var top = parseInt( window.getComputedStyle(this.$refs.spot).top );
+			var height = window.getComputedStyle(this.$refs.spot).height;
+			var step = Math.floor( parseInt(height)/86 );
+			this.stepArr = [];
+			for( var i=0;i<step;i++ ){
+				top=-86*i; 
+				this.stepArr.push( top );
+			}
+		},
 		methods:{
+			handlechangeClick:function(){
+				var ind = Math.floor(Math.random() * this.stepArr.length)
+				console.log(this.stepArr[ind])
+				this.$refs.spot.style.top = this.stepArr[ind]+"px"
+			}
 		}
 	}
 </script>
@@ -138,6 +153,7 @@
 	}
 	.hot-spot-list{
 		position:absolute;
+		top: 0;
 	}
 	.spotlistItem{
 		float: left;
