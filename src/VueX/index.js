@@ -11,7 +11,7 @@ export default new Vuex.Store({
 			activityInfo: [],
 			hotsaleInfo: [],
 			weekInfo: []
-		},
+	},
 	actions:{},
 	mutations:{
 		changeData( state,data ){

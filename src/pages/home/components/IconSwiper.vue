@@ -66,7 +66,10 @@
 	}
 	
 	.keywords {
-		padding-top: .2rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: .2rem .1rem 0 .1rem;
 	}
 	
 	.category-img-container img {
