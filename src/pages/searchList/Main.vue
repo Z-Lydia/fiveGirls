@@ -29,7 +29,7 @@
 					</div>
 					<div class="hot-spot-list" ref="spot">
 						<ul >
-							<li class="spotlistItem" is="spot-list" v-for="item in spotarr" :item="item"></li>
+							<li class="spotlistItem" v-for="item in spotarr">{{item}}</li>
 						</ul>
 					</div>
 				</div>
@@ -39,9 +39,9 @@
 							<span class="iconfont icon-chengshi city-icon"></span>
 						</div>
 					</div>
-					<div class="hot-city-list">
+					<div class="hot-city-list" ref="city">
 						<ul>
-							<li class="citylistItem" is="spot-list" v-for="item in cityarr" :item="item"></li>
+							<li class="citylistItem" v-for="item in cityarr">{{item}}</li>
 						</ul>
 					</div>
 				</div>
@@ -53,12 +53,7 @@
 	</div>
 </template>
 
-<script>
-	var spotList = {
-		props:["item"],
-		template:"<li><a>{{item}}</a></li>",
-	}
-	
+<script>	
 	export default {
 		data: function(){
 			var spotarr = ["天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡","天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡"];
@@ -70,24 +65,32 @@
 				show
 			}
 		},
-		components:{
-			"spot-list":spotList
-		},
 		mounted:function(){
-			var top = parseInt( window.getComputedStyle(this.$refs.spot).top );
-			var height = window.getComputedStyle(this.$refs.spot).height;
-			var step = Math.floor( parseInt(height)/86 );
-			this.stepArr = [];
-			for( var i=0;i<step;i++ ){
-				top=-86*i; 
-				this.stepArr.push( top );
+			var spot_top = parseInt( window.getComputedStyle(this.$refs.spot).top );
+			var spot_height = window.getComputedStyle(this.$refs.spot).height;
+			var spot_step = Math.floor( parseInt(spot_height)/86 );
+			this.spot_stepArr = [];
+			for( var i=0;i<spot_step;i++ ){
+				spot_top=-86*i; 
+				this.spot_stepArr.push( spot_top );
+			}
+			var city_top = parseInt( window.getComputedStyle(this.$refs.city).top );
+			var city_height = window.getComputedStyle(this.$refs.city).height;
+			var city_step = Math.floor( parseInt(city_height)/43 );
+			this.city_stepArr = [];
+			for( var i=0;i<city_step;i++ ){
+				city_top=-43*i; 
+				this.city_stepArr.push( city_top );
 			}
 		},
 		methods:{
 			handlechangeClick:function(){
-				var ind = Math.floor(Math.random() * this.stepArr.length)
-				console.log(this.stepArr[ind])
-				this.$refs.spot.style.top = this.stepArr[ind]+"px"
+				var spot_ind = Math.floor(Math.random() * this.spot_stepArr.length)
+				console.log(this.spot_stepArr[spot_ind])
+				this.$refs.spot.style.top = this.spot_stepArr[spot_ind]+"px"
+				var city_ind = Math.floor(Math.random() * this.city_stepArr.length)
+				console.log(this.city_stepArr[city_ind])
+				this.$refs.city.style.top = this.city_stepArr[city_ind]+"px"
 			}
 		}
 	}
@@ -185,9 +188,10 @@
 	.hot-city .city-icon{
 		margin-top:25%;
 	}
-	/*.hot-city-list{
+	.hot-city-list{
 		position:absolute;
-	}*/
+		top: 0;
+	}
 	.citylistItem{
 	    float: left;
 	    height: .36rem;
