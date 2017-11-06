@@ -1,15 +1,17 @@
 <template>
 	<div>
-		<div v-show="show" class="history">
+		<div v-show="historyItemArr.length" class="history">
 			<div class="history-title">
 				<span>搜索历史</span>
 				<span class="history-del">
 					<span class="iconfont icon-shanchu1"></span>
-					<span>清除</span>
+					<span @click="hendleDelClick">清除</span>
 				</span>
 			</div>
 			<div class="history-content">
-
+				<ul class="history-List">
+					<li class="historyListItem" v-for="item in historyItemArr">{{item}}</li>
+				</ul>
 			</div>
 		</div>
 		<div class="hot">
@@ -28,7 +30,7 @@
 						</div>
 					</div>
 					<div class="hot-spot-list" ref="spot">
-						<ul >
+						<ul @click="handleClick">
 							<li class="spotlistItem" v-for="item in spotarr">{{item}}</li>
 						</ul>
 					</div>
@@ -58,11 +60,15 @@
 		data: function(){
 			var spotarr = ["天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡","天坛公园","西湖雪山滑雪场","古北水镇","玉龙雪山","慈城古镇","华山","乌镇西山","都江堰","圆明园","泰山","成都欢乐谷","武汉欢乐谷","泸沽湖","常州环球动漫嬉戏谷","宋城千古情","故宫","张家界大峡谷","颐和园","鼓浪屿往返轮渡"];
 			var cityarr = [ "西安","南京","深圳","宁波","厦门","重庆","成都","天津" ];
-			var show = false;
+			var show = true;
+			var historyItemArr = [];
+			var s = new Set();
 			return {
 				spotarr,
 				cityarr,
-				show
+				show,
+				historyItemArr,
+				s
 			}
 		},
 		mounted:function(){
@@ -86,11 +92,17 @@
 		methods:{
 			handlechangeClick:function(){
 				var spot_ind = Math.floor(Math.random() * this.spot_stepArr.length)
-				console.log(this.spot_stepArr[spot_ind])
 				this.$refs.spot.style.top = this.spot_stepArr[spot_ind]+"px"
 				var city_ind = Math.floor(Math.random() * this.city_stepArr.length)
-				console.log(this.city_stepArr[city_ind])
 				this.$refs.city.style.top = this.city_stepArr[city_ind]+"px"
+			},
+			handleClick:function( e ){
+				var historyItem = e.target;
+				this.s.add( historyItem.innerHTML );
+				this.historyItemArr=Array.from(this.s);
+			},
+			hendleDelClick:function(){
+				this.historyItemArr=[];
 			}
 		}
 	}
@@ -123,8 +135,30 @@
 	    overflow-y: hidden;
 	    background-color: #fff;
 	    border-top: 1px solid #dce5e7;
-	    border-bottom: 1px solid #dce5e7
+	    border-bottom: 1px solid #dce5e7;
 	}
+	.history-List{
+		overflow: auto;
+		width: 50rem;
+	}
+	 .historyListItem{
+    	max-width: 2.89rem;
+	    height: .6rem;
+	    font-size: .26rem;
+	    color: #333;
+	    background-color: #fff;
+	    line-height: .6rem;
+	    padding: 0 .15rem;
+	    text-align: center;
+	    float: left;
+	    margin-left: .2rem;
+	    border: 1px solid #c9cccd;
+	    border-radius: 3px;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    margin-top: .3rem;
+    }
 	.hot-spot{
 		position:relative;
 	    border-top: 1px solid #dce5e7;
