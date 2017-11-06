@@ -116,7 +116,6 @@
 					this.contentShow = !this.contentShow;
 					this.maskShow = !this.maskShow
 				}
-				
 				this.footerShow = 2;
 				this.isClassifySelect = false;
 				this.isFiltrateSelect = true;
