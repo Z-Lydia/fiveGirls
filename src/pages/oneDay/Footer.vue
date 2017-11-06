@@ -20,7 +20,8 @@
 				<div v-if="footerShow===1" claass="OneDay-classify-content">
 					<div class="OneDay-classify-left">
 						<ul class="OneDay-classify-list">
-							<li class="OneDay-classify-listItem" is="classify-List" v-for="item in classifyArr" :item="item"></li>
+							<li class="OneDay-classify-listItem" v-for="item in classifyArr">{{item[0]}}<span>{{item[1]}}</span></li>
+
 						</ul>
 					</div>
 					<div class="OneDay-classify-right"></div>
@@ -52,10 +53,6 @@
 </template>
 
 <script>
-	var classifyList = {
-		props:["item"],
-		template:"<li>{{item[0]}}<span>{{item[1]}}</span></li>"
-	}
 	export default {
 		data:function(){
 			var maskShow = false;
@@ -88,10 +85,6 @@
 				isSortSelect,
 				ind
 			}
-		},
-		components:{
-			"classify-List":classifyList,
-			// "site-List":siteList,
 		},
 		methods:{
 			handleEndClick:function(){
@@ -153,7 +146,7 @@
 		height: 100%;
 		width: 100%;
 		background: rgba(0, 0, 0, .5);
-		position: absolute;
+		position: fixed;
 		top:0;
 		left:0;
 		right: 0;
