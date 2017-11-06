@@ -17,7 +17,6 @@
 					<input type="text" id="VisitIdCard" class="VisitIdCardInput" placeholder="请填写正确的身份证号号码" />
 				</li>
 			</ul>
-			<div>{{Num}}</div>
 		</form>
 		<p class="hot-tel"><span>咨询电话</span></p>
 		<div class="Visiter-Submit">
@@ -42,20 +41,20 @@
 <script>
 	import Bus from "../../../bus/bus.js";
 	export default {
-		created () {
-			Bus.$on("getNum", (num) => {
-				Bus.Num = num;				
+		created() {
+			Bus.$on("getNum", function(num){
+				
 			});
-		},
+		},	
 		data() {
 			var show = false;
 			return {
-				'Num': Bus.Num,
+				'Num': Bus.num,
 				"show": show
 			}
 		},
 		methods: {
-			isshow: function(){
+			isshow: function() {
 				this.show = !this.show;
 			}
 		}
@@ -141,11 +140,13 @@
 		margin-bottom: .2rem;
 		overflow: hidden;
 	}
-	.hot-tel span{
+	
+	.hot-tel span {
 		float: right;
 		padding: .1rem .3rem 0 0;
 	}
-	.Visiter-Submit{
+	
+	.Visiter-Submit {
 		position: fixed;
 		bottom: 0;
 		left: 0;
@@ -154,46 +155,56 @@
 		border-top: 1px solid #ccc;
 		height: 1rem;
 	}
-	.Visiter-Submit ul{
+	
+	.Visiter-Submit ul {
 		width: 100%;
 		line-height: 1rem;
 		overflow: hidden;
 	}
-	.Visiter-Submit ul li{
+	
+	.Visiter-Submit ul li {
 		line-height: 1rem;
 		float: left;
 		width: 50%;
 		text-align: center;
 	}
-	.Visiter-Submit ul li:first-child{
+	
+	.Visiter-Submit ul li:first-child {
 		background: #fff;
 	}
-	.all-price span:nth-child(1),.all-price a{
+	
+	.all-price span:nth-child(1),
+	.all-price a {
 		font-size: .24rem;
-		color:#ff9800 ;
+		color: #ff9800;
 	}
-	.all-price a em{
+	
+	.all-price a em {
 		font-size: .4rem;
-		color:#ff9800 ;
+		color: #ff9800;
 	}
-	.icon-shang{
+	
+	.icon-shang {
 		font-size: .32rem;
 		color: #ccc;
 	}
-	.Visiter-Submit ul li:last-child{
+	
+	.Visiter-Submit ul li:last-child {
 		background: #ff9800;
 		color: #fff;
 		font-size: .36rem;
 	}
-	.Order-footer-mask{
+	
+	.Order-footer-mask {
 		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 1rem;
-		background: rgba(0,0,0,0.2);
+		background: rgba(0, 0, 0, 0.2);
 	}
-	.Detail-ticket{
+	
+	.Detail-ticket {
 		width: 100%;
 		height: 1.2rem;
 		position: absolute;
@@ -201,7 +212,8 @@
 		background: #fff;
 		padding: .2rem 0;
 	}
-	.Detail-ticket p{
+	
+	.Detail-ticket p {
 		font-size: .36rem;
 		padding: .2rem;
 		color: #333;
@@ -209,7 +221,8 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	.Detail-ticket a{
+	
+	.Detail-ticket a {
 		color: #9e9e9e;
 		font-size: .28rem;
 		padding-left: .2rem;

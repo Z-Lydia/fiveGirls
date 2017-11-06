@@ -1,4 +1,3 @@
-//<router-view/>显示当前路由的组件
 <template>
   <div id="app">
     <router-view/>
