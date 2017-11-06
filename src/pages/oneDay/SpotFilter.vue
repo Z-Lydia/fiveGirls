@@ -2,41 +2,40 @@
   	<div class="spot-container">
 	  	<div class="spot-filter">
 	  		<ul class="spot-filter-list" :left="left">
-				<li class="spot-filter-listItem" is="spot-list" v-for="item in spotarr" :item="item"></li>
-	  		</ul>
-	  		<div @click="show=!show" class="status-switch">
-	  			<span class="switch-icon iconfont icon-jiantouxia"></span>
-	  		</div>
+				<li class="spot-filter-listItem"  @click="handleSelectClick(index)" :class="{select:ind===index}" v-for="(item,index) in spotarr" >{{item}}</li>
+	  		</ul>	
 	  	</div>
   		<div v-show="show" class="spot-check">
   			<p class="spot-check-title">游玩景点<span>（可多选）</span></p>
   			<ul class="spot-check-list">
-				<li class="spot-filter-listItem spot-check-listItem" is="spot-list" v-for="item in spotarr" :item="item"></li>
+				<li class="spot-filter-listItem" @click="handleSelectClick(index)" :class="{select:ind===index}" v-for="(item,index) in spotarr">{{item}}</li>
   			</ul>
+  		</div>
+  		<div @click="show=!show" class="status-switch">
+  			<span class="switch-icon iconfont icon-jiantouxia"></span>
   		</div>
   	</div>
 </template>
 
 <script>
-var spotList = {
-	props:["item"],
-	template:"<li><a>{{item}}</a></li>",
-}
 export default {
 	data:function(){
 		var spotarr = ["八达岭长城","古北水镇","故宫","鸟巢","司马台长城","颐和园","天安门广场","水立方","古北水镇天然温泉","恭王府","什刹海","定陵","古北口文化文物旅游区","天坛公园","明十三陵","北京动物园","什刹海","定陵","古北口文化文物旅游区","天坛公园","明十三陵","北京动物园","什刹海","定陵","古北口文化文物旅游区","天坛公园","明十三陵","北京动物园","什刹海","定陵","古北口文化文物旅游区","天坛公园","明十三陵","北京动物园"];
 		var left = 0;
 		var show = false;
+		var ind=""
 		return {
 			spotarr,
 			left,
-			show
+			show,
+			ind
 		}
 	},
-	components:{
-		"spot-list":spotList
-	},
 	methods:{
+		handleSelectClick:function( index ){
+			this.ind=index;
+
+		}
 	}
 }
 </script>
@@ -48,20 +47,25 @@ export default {
 		position: relative;
 		padding: .08rem .12rem;
 	}
+	::-webkit-scrollbar{
+		display: none;
+	}
 	.spot-filter{
+		position: relative;
+		width: 100%;
+		height: .68rem;
 		overflow: auto;
 	}
 	.spot-filter-list{
-		width: 4913px;
+		width: 100rem;
 		height: .68rem;
 		position: absolute;
+		clear: both;
 	}
 	.spot-filter-listItem{
 		float: left;
-		padding: .04rem .08rem;
-	} 
-	.spot-filter-listItem a{
-	    display: block;
+		margin: .04rem .08rem;
+		display: block;
 	    min-width: .26rem;
 	    padding: 0 .22rem;
 	    background: #fff;
@@ -69,7 +73,9 @@ export default {
 	    font-size: .26rem;
 	    line-height: .56rem;
 	    border-radius: .04rem;
-	}
+	    border: 1px solid #fff;
+
+	} 
 	.status-switch {
 		position: absolute;
 	    z-index: 3;
@@ -103,8 +109,7 @@ export default {
 	.spot-check-title span{
 		font-size: .24rem;
 	}
-	.spot-check-listItem{
-		padding-top: .08rem;
-    	padding-bottom: .08rem
+	.select{
+		border-color: #00bcd4;
 	}
 </style>

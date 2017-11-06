@@ -34,16 +34,16 @@
 					</div>
 					<div class="OneDay-filtrate-right">
 						<ul v-if="siteshow==='a'" class="end">
-							<li class="OneDay-filtrate-listItem site-list" is="site-List" v-for="item in EndArr" :item="item"></li>
+							<li class="OneDay-filtrate-listItem site-list" v-for="item in EndArr">{{item}}</li>
 						</ul>
 						<ul v-else class="start">
-							<li class="OneDay-filtrate-listItem site-list" is="site-List" v-for="item in startArr" :item="item"></li>
+							<li class="OneDay-filtrate-listItem site-list" v-for="item in startArr">{{item}}</li>
 						</ul>
 					</div>
 				</div>
 				<div v-else-if="footerShow===3" class="OneDay-sort-content">
 					<ul class="sort-list">
-						<li class="sort-listItem" is="sort-list" v-for="(item,index) in sortArr" :item="item" :index="index" :class="{selectIcon:ind===index}" @click="handleSelect(index)"></li>
+						<li class="sort-listItem" v-for="(item,index) in sortArr" :index="index" :class="{selectIcon:ind===index}" @click="handleSelect(index)">{{item}}</li>
 					</ul>
 				</div>
 			</div>	
@@ -55,14 +55,6 @@
 	var classifyList = {
 		props:["item"],
 		template:"<li>{{item[0]}}<span>{{item[1]}}</span></li>"
-	}
-	var siteList = {
-		props:["item"],
-		template:"<li>{{item}}</li>"
-	}
-	var sortList = {
-		props:["item","index"],
-		template:"<li >{{item}}</li>"
 	}
 	export default {
 		data:function(){
@@ -79,7 +71,7 @@
 			var isFiltrateSelect = false;
 			var isSortSelect = false;
 			var sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热"];
-			var ind = '';
+			var ind =0;
 			return {
 				maskShow,
 				classifyArr,
@@ -99,8 +91,7 @@
 		},
 		components:{
 			"classify-List":classifyList,
-			"site-List":siteList,
-			"sort-list":sortList 
+			// "site-List":siteList,
 		},
 		methods:{
 			handleEndClick:function(){
@@ -151,8 +142,6 @@
 				this.isSortSelect = true;
 			},
 			handleSelect:function(index){
-				alert("a")
-				console.log(index);
 				this.ind = index;
 			}
 		}
@@ -283,9 +272,6 @@
 	    border-bottom:.001rem solid #e4e6e8
 	}
 	.selectIcon{
-		color: #00afc7;
-	}
-	.sort-listItem:nth-child(1){
 		color: #00afc7;
 	}
 </style>
