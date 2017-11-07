@@ -2,218 +2,24 @@
 <div class="list-page">
 	<div>
 		<ul>
-			<li class="list-item">
+			<li class="list-item"  v-for="item in onedayInfo" :key="item.id">
 				<div class="list-img-con">
-					<img src="//img1.qunarzz.com/p/tts2/1707/43/8250a273d1946502.jpg_110x110_532f0563.jpg" class="list-img">
+					<img :src="item.imgUrl" class="list-img">
 					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
+						<span class="list-bookingtext">{{item.text}}</span>
 					</span>
 				</div>
 				<div class="list-productinfo">
-					<h4 class="list-productname">[北京出发]天安门＋故宫【赠送珍宝馆】＋八达岭长城＋鸟巢·水立方一日游</h4>
+					<h4 class="list-productname">{{item.title}}</h4>
 					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
+						<span class="list-tagitemlight">{{item.tagitemlight}}</span>
+						<span class="list-tagitem">{{item.tagitem}}</span>
+						<span class="list-tagitem">{{item.tagitem1}}</span>
 					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">208</em><span class="list-priceflag">起</span>
+					<div class="list-priceinfo"><span class="list-qunarprice">{{item.priceinfo}}</span><em class="list-price">{{item.listPrice}}</em><span class="list-priceflag">{{item.listPriceflag}}</span>
 					</div>
 					<div class="list-moreinfo">
-						<span class="list-text">已售953</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts1/1605/35/f267ae654a8511f7.jpg_110x110_33358754.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【休闲纯玩半日游】恭王府.含大戏楼+什刹海+黄包车半日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">90</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售189</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts0/1511/7e/f82b6124019d78f7.jpg_110x110_f99e78f5.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【配备无线耳麦】故宫+珍宝馆深度纯玩半日游（含导游+门票</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">75</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售400</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts1/1505/c9/4cdfc7d9932008.jpg_110x110_16d9c8ff.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">北京八达岭长城＋庆丰包子铺+恭王府+鸟巢.水立方纯玩一日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-cashback">
-						<span class="list-product-cashback">赠券</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">198</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售345</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts3/1708/e0/9072ffc0ef322302.jpg_110x110_52fb9421.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【7-12点天天发】八达岭长城+往返直通车+门票，自由可选！</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">45</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售7340</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts0/1707/e3/d77d245a07ca4102.jpg_110x110_b3252ca4.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【爆款】北京八达岭长城+十三陵定陵含地宫鸟巢纯玩一日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">118</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售3976</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts1/1611/34/ce613ef51240ad02.jpg_110x110_fb7e8f08.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【5大景点】广场+故宫+八达岭长城+鸟巢水立方，北京一日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">148</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售3476</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts4/1511/bb/0e9192fe4e7fcef7.jpg_110x110_058b32ed.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【深度文化游】故宫+恭王府+颐和园+鸟巢水立方纯玩一日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">208</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售254</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts6/1707/af/2361187e42829e02.jpg_110x110_c1663208.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【天天发】北京古北水镇门票日景夜景+往返直通车+导游服务</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">88</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售894</span>
-					</div>
-				</div>
-			</li>
-			<li class="list-item">
-				<div class="list-img-con">
-					<img src="http://img1.qunarzz.com/p/tts2/1706/b9/68688c37bace6c02.jpg_110x110_32e4422c.jpg" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">可订明日</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">【10点天天发】北京八达岭长城+鸟巢水立方纯玩一日游</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">北京出发</span>
-						<span class="list-tagitem">无自费</span>
-						<span class="list-tagitem">无购物</span>
-					</div>
-					<div class="list-cashback">
-						<span class="list-product-cashback">赠券</span>
-					</div><div class="list-priceinfo"><span class="list-qunarprice">￥</span><em class="list-price">79</em><span class="list-priceflag">起</span>
-					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">已售2061</span>
+						<span class="list-text">{{item.listText}}</span>
 					</div>
 				</div>
 			</li>
@@ -232,7 +38,12 @@
 
 <script>
 	export default{
-		
+		computed:{
+			onedayInfo(){
+				return this.$store.state.oneDay.onedayInfo
+			}
+		}
+			
 	}
 </script>
 
