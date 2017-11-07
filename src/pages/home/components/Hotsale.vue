@@ -21,14 +21,20 @@
 				</ul>
 			</div>
 			<div class="scenery-more">
-				<a href="#">查看所有产品</a>
+				<router-link to="/list">
+					<a href="#">查看所有产品</a>
+				</router-link>
 			</div>
 	</div>
 </template>
 
 <script>
 	export default{
-		props:[ "hotsaleInfo" ]
+		computed: {
+			hotsaleInfo() {
+				return this.$store.state.home.hotsaleInfo;
+			}
+		}
 		
 	}
 </script>

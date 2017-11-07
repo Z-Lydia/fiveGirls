@@ -1,15 +1,16 @@
 <template>
-  	<div>
+  	<div ref="IndexLoaded" id="IndexLoaded">
 		<home-header />
-		<home-swiper :swiperInfo="this.$store.state.swiperInfo" />
-		<home-IconSwiper :iconSwiperInfo="this.$store.state.iconSwiperInfo" />
-		<home-activity :activityInfo="this.$store.state.activityInfo" />
-		<home-hotsale :hotsaleInfo="this.$store.state.hotsaleInfo" />
-		<home-week :weekInfo="this.$store.state.weekInfo" />  	
+		<home-swiper />
+		<home-IconSwiper />
+		<home-activity />
+		<home-hotsale  />
+		<home-week  />  
+		<div ref="LoosenLoad" style="display: none;">松开加载</div>
 	</div>
-  
 </template>
-
+<script src="../../utils/zepto.js"></script>
+<script src="../../utils/demoUtils.js"></script>
 <script>
 import Header from "./components/Header";
 import Swiper from "./components/Swiper";
@@ -17,7 +18,7 @@ import IconSwiper from "./components/IconSwiper";
 import Activity from "./components/Activity";
 import Hotsale from "./components/Hotsale";
 import WeekList from "./components/WeekList";
-import axios from 'axios';
+import Iscoll from "../../utils/iscroll-probe.js";
 
 export default {
 
@@ -29,31 +30,31 @@ export default {
 		"home-hotsale":Hotsale,
 		"home-week": WeekList
 	},
-
 	methods: {
-		getHomeData() {
-			axios.get('/static/index.json')
-				.then(this.handleGetDataSucc.bind(this))
-				.catch(this.handleGetDataErr.bind(this))
+		init() {
+			this.LoadElem = this.$refs.IndexLoaded;
+			this.LoosenLoadElem = this.$refs.LoosenLoad;
+			this.flag = false; 	
+			this.loading = false;
+			this.myScroll = new IScroll('#IndexLoaded',{
+				probeType: 3,
+				moueWheel: true
+			});
+			this.bindEvents();
 		},
-
-		handleGetDataSucc( response ) {
-			if (response.status === 200) { 
-				const {data}  = response.data;
-				this.$store.commit( "changeData",data );
-			}
-		},
-
-		handleGetDataErr( err ) {
-			console.log(err)
+		bindEvents(){
+			var that = this;
+			//document.addEventListener();
+			that.myScroll.on('scroll',function(){
+				console.log(that.myScroll.y);
+			});
 		}
 	},
-
 	mounted() {
-		if (!this.$store.state.swiperInfo.length) {
-			this.getHomeData();
-		}
-		
+		if (this.$store.getters.shouldGetData) {
+			this.$store.dispatch("getHomeData");
+		}	
+		this.init();
 	}
 }
 </script>

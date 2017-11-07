@@ -9,7 +9,7 @@
 							<img :src="item.imgUrl" alt="北京温泉排行榜">
 						</div>
 						<div class="product-info">
-							<p class="product-name">{{item.title}}</p>
+							<p class="product-name" ref="weekLoaded">{{item.title}}</p>
 							<p class="product-desc">{{item.tip}}</p>
 						</div>
 					</a>
@@ -18,10 +18,13 @@
 		</div>
 	</div>
 </template>
-
-<script>
+<script>	
 	export default {
-		props:[ "weekInfo" ]
+		computed: {
+			weekInfo() {
+				return this.$store.state.home.weekInfo;
+			}
+		}
 	}
 </script>
 
@@ -57,6 +60,7 @@
 	.product-info{
 		height: 0.64rem;
 		padding: .2rem .3rem .4rem;
+		font-family: "微软雅黑";
 	}
 	.product-info p{
 		padding-bottom: .15rem;
@@ -65,7 +69,7 @@
 		text-overflow: ellipsis;
 	}
 	.product-name{
-		font-size: .32rem;
+		font-size: .3rem;
 		color: #000;
 	}
 	.product-desc{

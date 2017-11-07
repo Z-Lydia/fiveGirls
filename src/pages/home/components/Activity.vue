@@ -18,7 +18,13 @@
 </template>
 
 <script>
-	export default {}
+	export default {
+		computed: {
+			activityInfo() {
+				return this.$store.state.home.activityInfo;
+			}
+		}
+	}
 </script>
 
 <style scoped="scoped">

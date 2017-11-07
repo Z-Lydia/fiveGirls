@@ -1,15 +1,17 @@
 <template>
 	<header class="header">
 		<div class="header-left iconfont icon-return"></div>
-		<router-link to="/list">
+		<router-link to="/Searchlist">
 			<div class="header-title">
 				输入城市/景点/游玩主题
 			</div>
 		</router-link>
 		<div class="header-right">
-			<div class="header-city-wrapper">
-				<span class="header-city">北京</span>
-			</div>
+			<router-link to="/city">
+				<div class="header-city-wrapper">
+					<span class="header-city">北京</span>
+				</div>
+			</router-link>
 		</div>
 	</header>
 </template>
@@ -62,6 +64,7 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		display: inline-block;
+		color: #fff;
 	}
 	.header-city::after{
 		content: "\0020";

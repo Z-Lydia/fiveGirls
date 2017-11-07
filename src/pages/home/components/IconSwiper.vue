@@ -1,11 +1,12 @@
 <template>
 	<swiper :options="swiperOption" ref="mySwiper">
 		<swiper-slide>
-
 			<div class="category-container">
 				<div class="category-img-container" v-for="(item,index) in iconSwiperInfo" :key="item.id" v-if="index<8">
-					<img :src="item.imgUrl" />
-					<div class="keywords">{{item.title}}</div>
+					<router-link :to= "item.link" >
+						<img :src="item.imgUrl" />
+						<div class="keywords">{{item.title}}</div>
+					</router-link>
 				</div>
 			</div>
 		</swiper-slide>
@@ -13,12 +14,13 @@
 			<div>
 				<div div class="category-container">
 					<div class="category-img-container" v-for="(item,index) in iconSwiperInfo" :key="item.id" v-if="index>7 && index<16">
-						<img :src="item.imgUrl" />
-						<div class="keywords">{{item.title}}</div>
+						<router-link :to= "item.link" >
+							<img :src="item.imgUrl" />
+							<div class="keywords">{{item.title}}</div>
+						</router-link>
 					</div>
 				</div>
 			</div>
-
 		</swiper-slide>
 		<div class="swiper-pagination" slot="pagination"></div>
 	</swiper>
@@ -31,8 +33,6 @@
 	} from 'vue-awesome-swiper'
 
 	export default {
-		props:[ "iconSwiperInfo" ],
-
 		data() {
 				return {
 					swiperOption: {
@@ -43,10 +43,15 @@
 					}
 				}
 		},
-			components: {
-				swiper,
-				swiperSlide
+		computed: {
+			iconSwiperInfo() {
+				return this.$store.state.home.iconSwiperInfo;
 			}
+		},
+		components: {
+			swiper,
+			swiperSlide
+		}
 	}
 </script>
 

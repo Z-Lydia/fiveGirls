@@ -15,18 +15,21 @@
 <script>
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	export default {
-		props: ["swiperInfo"],
-
 		data() {
-				return {
-						swiperOption: {
-								autoplay: 3000,
-								direction: 'horizontal',
-								autoHeight: true,
-								pagination: '.swiper-pagination',
-								observeParents: true
-						}
-				}
+			return {
+					swiperOption: {
+							autoplay: 3000,
+							direction: 'horizontal',
+							autoHeight: true,
+							pagination: '.swiper-pagination',
+							observeParents: true
+					}
+			}
+		},
+		computed: {
+			swiperInfo() {
+				return this.$store.state.home.swiperInfo;
+			}
 		},
 		components: {
 				swiper,
