@@ -148,7 +148,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.mask{
 		height: 100%;
 		width: 100%;
