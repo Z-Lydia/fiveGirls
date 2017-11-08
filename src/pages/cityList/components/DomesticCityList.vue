@@ -30,12 +30,6 @@
 
 	export default {
 
-		data() {
-			return {
-				aside:[]
-			}
-		},
-
 		computed: mapState({
 
             hotCity(state) {
@@ -49,17 +43,9 @@
         methods: {
 
         	handleIndexesListTouch( e ) {
-        		const asideTop = parseInt( window.getComputedStyle( this.$refs.aside ).top );
-        		const asideHeight = parseInt( window.getComputedStyle( this.$refs.aside ).height );
-        		this.target = e.target
-        		const height = parseInt( getComputedStyle(this.target,null).height );
-        		const asideItemNum = asideHeight/height;
-        		for( var i=0;i<asideItemNum;i++ ){
-        			this.aside.push( asideTop+height*i )
-        		}
+        		this.target = e.target;
         		const name = this.target.innerHTML
-        		const top = this.$refs[name][0].offsetTop;
-        		document.documentElement.scrollTop = top-44;
+        		document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44;
         		document.addEventListener("touchmove",this.handleMoveTouch, false);
         		document.addEventListener("touchend",this.handleMoveEnd, false)
         	},
@@ -67,15 +53,13 @@
         	handleMoveTouch(event) {
         		event.preventDefault();      	 	
         		const height = event.touches[0].clientY;
-        	 	for( let i=0,l=this.aside.length;i<l;i++ ){
+        	 	for( let i=0,l=this.aside.length;i<l-1;i++ ){
         	 		let min = this.aside[i];
         	 		let max = this.aside[i+1];
         	 		if( height>min && height<max ) {
-        	 			if (this.domesticCity[i+1]) {
-        	 				const name = this.domesticCity[i+1][0];
-        	 				const top = this.$refs[name][0].offsetTop;
-        					document.documentElement.scrollTop = top-44;
-        	 			}
+    	 				const name = this.domesticCity[i][0];
+    					document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44;
+    					break;
         	 		}
         	 	}
         	 },
@@ -85,6 +69,18 @@
         		document.removeEventListener("touchend", this.handleMoveEnd);
         	}
         },
+
+        mounted() {
+        	setTimeout(() =>{
+        		this.aside=[];
+        		const asideTop = parseInt( window.getComputedStyle( this.$refs.aside ).top );
+        		const asideHeight = parseInt( window.getComputedStyle( this.$refs.aside ).height );
+        		const len = this.domesticCity.length
+	        	for( var i=0;i<len;i++ ){
+	        		this.aside.push( asideTop+parseInt(asideHeight/len)*i )
+	        	}
+        	},10)
+        }
 	}
 </script>
 

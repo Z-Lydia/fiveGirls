@@ -12,13 +12,13 @@
 				<div class="hotCity-city  location-city" v-for="(item,index) in hotforeign">{{item.city}}</div>
 			</div>
 		</div>
-		<div class="DomesticCityList-container">
+		<div class="foreignCityList-container">
 			<div v-for="foreignCityItem in foreignCity" :ref="foreignCityItem[0]">
 				<h6 class="area-title">{{foreignCityItem[0]}}</h6>
 				<div class="Inland-cityList" v-for="item in foreignCityItem[1]">{{item.cityarea}}</div>
 			</div>
 		</div>
-		<div class="indexes"  @touchstart="handleIndexesList">
+		<div class="indexes"  @touchstart="handleIndexesListTouch" ref="aside">
 			<h5 class="indexesItem" v-for="foreignCityItem in foreignCity">{{foreignCityItem[0]}}</h5>
 		</div>
 	</div>
@@ -40,15 +40,47 @@
         }),
 
         methods: {
-        	handleIndexesList( e ) {
-        		this.target = e.target
-        		var name = this.target.innerHTML
-        		var height = this.$refs[name][0].offsetTop;
-        		document.documentElement.scrollTop = height-44;
+        	handleIndexesListTouch( e ) {
+        		this.target = e.target;
+        		const name = this.target.innerHTML
+        		document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44;
+        		document.addEventListener("touchmove",this.handleMoveTouch, false);
+        		document.addEventListener("touchend",this.handleMoveEnd, false)
         	},
-        }
 
-	}
+        	handleMoveTouch(event) {
+        		event.preventDefault();      	 	
+        		const height = event.touches[0].clientY;
+        	 	for( let i=0,l=this.aside.length;i<l-1;i++ ){
+        	 		let min = this.aside[i];
+        	 		let max = this.aside[i+1];
+        	 		if( height>min && height<max ) {
+    	 				const name = this.foreignCity[i][0];
+    					document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44;
+    					break;
+        	 		}
+        	 	}
+        	 },
+
+        	handleMoveEnd() {
+        		document.removeEventListener("touchmove", this.handleMoveTouch);
+        		document.removeEventListener("touchend", this.handleMoveEnd);
+        	}
+        },
+
+        mounted() {
+        	setTimeout(() =>{
+        		this.aside=[];
+        		const asideTop = parseInt( window.getComputedStyle( this.$refs.aside ).top );
+        		const asideHeight = parseInt( window.getComputedStyle( this.$refs.aside ).height );
+        		const len = this.foreignCity.length
+	        	for( var i=0;i<len;i++ ){
+	        		this.aside.push( asideTop+parseInt(asideHeight/len)*i )
+	        	}
+        	},10)
+        }
+    }
+
 </script>
 
 <style scoped>
