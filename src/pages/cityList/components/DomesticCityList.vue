@@ -1,0 +1,121 @@
+<template>
+	<div>
+		<div class="location-containner">
+			<h6 class="area-title">您的位置</h6>
+			<div class="location">
+				<div class="location-city CitySelect">北京</div>
+			</div>
+		</div>
+		<div class="hotCity-containner">
+			<h6 class="area-title">热门城市</h6>
+			<div class="hotCity location">
+				<div class="hotCity-city  location-city" v-for="(item,index) in hotCity">{{item.city}}</div>
+			</div>
+		</div>
+		<div class="DomesticCityList-container">
+			<div v-for="domesticCityItem in domesticCity" :ref="domesticCityItem[0]">
+				<h6 class="area-title">{{domesticCityItem[0]}}</h6>
+				<div class="Inland-cityList" v-for="item in domesticCityItem[1]">{{item.cityarea}}</div>
+			</div>
+		</div>
+		<div class="indexes" @touchstart="handleIndexesList">
+			<h5 class="indexesItem" v-for="domesticCityItem in domesticCity">{{domesticCityItem[0]}}</h5>
+		</div>
+	</div>
+  	
+</template>
+
+<script>
+	import { mapState } from "vuex"
+
+	export default {
+
+		computed: mapState({
+            hotCity(state) {
+                return state.city.hotCity
+            },
+            domesticCity(state) {
+            	return state.city.domesticCity
+            }
+        }),
+
+        methods: {
+        	handleIndexesList( e ) {
+        		this.target = e.target
+        		var name = this.target.innerHTML
+        		var height = this.$refs[name][0].offsetTop;
+        		document.documentElement.scrollTop = height-44;
+        	},
+        }
+
+	}
+</script>
+
+<style scoped>
+	.area-title{
+		line-height: .54rem;
+	    padding-left: .3rem;
+	    color: #616161;
+	    font-size: .26rem;
+	    background: #f5f5f5;
+	}
+	.location{
+		padding: .04rem .5rem .26rem .2rem;
+    	overflow: hidden;
+	    background: #fff;
+	}
+	.location-city{
+		box-sizing: border-box;
+	    width: 30%;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	  	margin-top: .2rem;
+    	color: #212121;
+	    line-height: .56rem;
+	    text-align: center;
+	    border: .02rem solid #c9cccd;
+	    border-radius: .06rem;
+	}
+	.CitySelect{
+		border-color: #00afc7;
+		color: #00afc7;
+	}
+	.hotCity{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.area-title{
+		line-height: .54rem;
+	    padding-left: .3rem;
+	    color: #616161;
+	    font-size: .26rem;
+	    background: #f5f5f5;
+	}
+	.Inland-cityList{
+		line-height: .76rem;
+	    padding-left: .2rem;
+	    font-size: .28rem;
+	    color: #212121;
+	    border-top: 1px solid #f5f5f5;
+	    width: 100%;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	}
+	.indexes{
+		position: fixed;
+		top: 25%;
+		right: 0;
+	}
+	.indexesItem{
+		width: .32rem;
+	    line-height: .32rem;
+	    padding-left: .2rem;
+	    color: #00afc7;
+	    font-size: .24rem;
+	    text-align: center;
+	}
+</style>
