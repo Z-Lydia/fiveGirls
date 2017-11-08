@@ -236,7 +236,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.list-page{
 		background:#f5f5f5;
 	}
