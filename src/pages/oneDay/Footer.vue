@@ -54,36 +54,26 @@
 
 <script>
 	export default {
-		data:function(){
-			var maskShow = false;
-			var classifyArr = [["全部分类","173"],["一日游","149"],["文化古迹","12"],["城市观光","4"],["展馆","3"],["交通","2"],["自然风光","1"],["餐饮","1"],["温泉","1"]];
-			var footerShow = 2;
-			var EndArr = ["全部目的地","北京","天津","唐山","保定","承德"];
-			var startArr = ["全部出发地","北京"];
-			var siteshow = 'a';
-			var isEndSelect = true;
-			var isStartSelect = false;
-			var contentShow = false;
-			var isClassifySelect = false;
-			var isFiltrateSelect = false;
-			var isSortSelect = false;
-			var sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热"];
-			var ind =0;
+		data() {
+			const classifyArr = [["全部分类","173"],["一日游","149"],["文化古迹","12"],["城市观光","4"],["展馆","3"],["交通","2"],["自然风光","1"],["餐饮","1"],["温泉","1"]];
+			const EndArr = ["全部目的地","北京","天津","唐山","保定","承德"];
+			const startArr = ["全部出发地","北京"];
+			const sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热"];
 			return {
-				maskShow,
+				maskShow:false,
 				classifyArr,
-				footerShow,
+				footerShow:2,
 				EndArr,
 				startArr,
-				siteshow,
-				isEndSelect,
-				isStartSelect,
-				contentShow,
+				siteshow:'a',
+				isEndSelect:true,
+				isStartSelect:false,
+				contentShow:false,
 				sortArr,
-				isClassifySelect,
-				isFiltrateSelect,
-				isSortSelect,
-				ind
+				isClassifySelect:false,
+				isFiltrateSelect:false,
+				isSortSelect:false,
+				ind:0
 			}
 		},
 		methods:{

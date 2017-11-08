@@ -55,25 +55,28 @@ export default {
 		width: 100%;
 		height: .68rem;
 		overflow: auto;
+		white-space: nowrap;
 	}
 	.spot-filter-list{
-		width: 100rem;
+		/* width: 100rem; */
+		display: flex;
+		white-space: nowrap;
 		height: .68rem;
 		position: absolute;
 		clear: both;
+		overflow-x: auto;
 	}
 	.spot-filter-listItem{
 		float: left;
 		margin: .04rem .08rem;
-		display: block;
 	    min-width: .26rem;
 	    padding: 0 .22rem;
-	    background: #fff;
-	    color: #212121;
 	    font-size: .26rem;
 	    line-height: .56rem;
 	    border-radius: .04rem;
 	    border: 1px solid #fff;
+	    color: #212121;
+	    background: #fff;
 
 	} 
 	.status-switch {
