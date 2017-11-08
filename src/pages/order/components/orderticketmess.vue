@@ -19,7 +19,6 @@
 </template>
 
 <script>
-	import Bus from "@/../bus/bus.js";
 	var ticketPrice = {
 			props: ["price"],
 			template: "<em> {{ price }} </em>"
@@ -33,6 +32,9 @@
 			return {
 				price
 			}
+		},
+		mounted() {
+			this.$emit("SendTicketPrice", this.price);
 		}
 	}
 </script>

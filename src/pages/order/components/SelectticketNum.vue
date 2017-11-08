@@ -18,7 +18,6 @@
 </template>
 
 <script>
-	import Bus from "../../../bus/bus.js";
 	var SelectNum = {
 			props: ["Num"],
 			template: "<span> {{ Num }} </span>",
@@ -37,13 +36,13 @@
 			handleMinusBtnClick: function (){
 				if(this.Num>1){
 					this.Num--;
-					Bus.$emit("getNum",this.Num);
+					this.$emit("GetNum",this.Num);
 				}
 			},
 			handleAddBtnClick: function (){
 				if(this.Num<5){
 					this.Num++;
-					Bus.$emit("getNum",this.Num);
+					this.$emit("GetNum",this.Num);
 				}	
 			}		
 		}
