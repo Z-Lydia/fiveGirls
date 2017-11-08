@@ -35,7 +35,7 @@
         }),
 
 		methods:{
-			handleSearchCity:function( e ){
+			handleSearchCity( e ) {
 				if( e ){
 					var reg = /^[\u4e00-\u9fa5]+$/;
 					if( reg.test( e ) ){

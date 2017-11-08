@@ -18,7 +18,7 @@
 				<div class="Inland-cityList" v-for="item in domesticCityItem[1]">{{item.cityarea}}</div>
 			</div>
 		</div>
-		<div class="indexes" @touchstart="handleIndexesList">
+		<div class="indexes" @touchstart="handleIndexesListTouch" ref="aside">
 			<h5 class="indexesItem" v-for="domesticCityItem in domesticCity">{{domesticCityItem[0]}}</h5>
 		</div>
 	</div>
@@ -30,7 +30,14 @@
 
 	export default {
 
+		data() {
+			return {
+				aside:[]
+			}
+		},
+
 		computed: mapState({
+
             hotCity(state) {
                 return state.city.hotCity
             },
@@ -40,14 +47,44 @@
         }),
 
         methods: {
-        	handleIndexesList( e ) {
-        		this.target = e.target
-        		var name = this.target.innerHTML
-        		var height = this.$refs[name][0].offsetTop;
-        		document.documentElement.scrollTop = height-44;
-        	},
-        }
 
+        	handleIndexesListTouch( e ) {
+        		const asideTop = parseInt( window.getComputedStyle( this.$refs.aside ).top );
+        		const asideHeight = parseInt( window.getComputedStyle( this.$refs.aside ).height );
+        		this.target = e.target
+        		const height = parseInt( getComputedStyle(this.target,null).height );
+        		const asideItemNum = asideHeight/height;
+        		for( var i=0;i<asideItemNum;i++ ){
+        			this.aside.push( asideTop+height*i )
+        		}
+        		const name = this.target.innerHTML
+        		const top = this.$refs[name][0].offsetTop;
+        		document.documentElement.scrollTop = top-44;
+        		document.addEventListener("touchmove",this.handleMoveTouch, false);
+        		document.addEventListener("touchend",this.handleMoveEnd, false)
+        	},
+
+        	handleMoveTouch(event) {
+        		event.preventDefault();      	 	
+        		const height = event.touches[0].clientY;
+        	 	for( let i=0,l=this.aside.length;i<l;i++ ){
+        	 		let min = this.aside[i];
+        	 		let max = this.aside[i+1];
+        	 		if( height>min && height<max ) {
+        	 			if (this.domesticCity[i+1]) {
+        	 				const name = this.domesticCity[i+1][0];
+        	 				const top = this.$refs[name][0].offsetTop;
+        					document.documentElement.scrollTop = top-44;
+        	 			}
+        	 		}
+        	 	}
+        	 },
+
+        	handleMoveEnd() {
+        		document.removeEventListener("touchmove", this.handleMoveTouch);
+        		document.removeEventListener("touchend", this.handleMoveEnd);
+        	}
+        },
 	}
 </script>
 

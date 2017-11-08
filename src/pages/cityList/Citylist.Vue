@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<cityList-header @handleChange="handleChangeCity" />
+		<cityList-header @Change="handleChangeCity" />
 		<cityList-domestic v-if="show" />
 		<cityList-foreign v-else />
 	</div>

@@ -23,7 +23,8 @@
 		},
 
 		methods:{
-			handelSelectClick:function(e){
+			
+			handelSelectClick(e) {
 				var elem = e.target;
 				if( elem.innerHTML==="国内" ){
 					this.IsSelect = 'inland';
@@ -34,12 +35,12 @@
 				}
 				var show = this.show;
 				document.documentElement.scrollTop = 0;
-    			this.$emit('handleChange',{
+    			this.$emit('Change',{
     				show
     			})
 			},
 
-			handleReturnClick:function(){
+			handleReturnClick() {
 				this.$router.go(-1);
 			},
 
