@@ -6,7 +6,8 @@ export default {
 			iconSwiperInfo: [],
 			activityInfo: [],
 			hotsaleInfo: [],
-			weekInfo: []
+			weekInfo: [],
+			refreshWeekInfo: []
 	},
 	actions:{
 		getHomeData(context) {
@@ -29,6 +30,10 @@ export default {
 			state.activityInfo = data.activityInfo;
 			state.hotsaleInfo = data.hotsaleInfo;
 			state.weekInfo = data.weekInfo;
+			state.refreshweekInfo = data.refreshweekInfo;
+		},
+		refreshInfo(state,data ){
+			state.weekInfo.push(...state.refreshweekInfo);
 		}
 	},
 	getters: {

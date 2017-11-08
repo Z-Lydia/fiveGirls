@@ -166,24 +166,13 @@
 			"link":"#",
 			"title":"北京必游TOP10",
 			"tip":"来北京必去的景点非这些地方莫属"
-		},{
+		}],
+		"refreshweekInfo":[{
 			"id":4,
 			"imgUrl":"http://img1.qunarzz.com/sight/source/1509/81/0412da9c4db66a.jpg_r_640x214_8e23871e.jpg",
 			"link":"#",
 			"title":"登高望远秋色佳",
 			"tip":"山顶满眼彩色，此情此景醉了"
-		},{
-			"id":5,
-			"imgUrl":"http://img1.qunarzz.com/sight/source/1509/28/1bb74b851279e6.jpg_r_640x214_64ebf0ee.jpg",
-			"link":"#",
-			"title":"北京温泉排行榜",
-			"tip":"细数北京温泉，温暖你的冬天"
-		},{
-			"id":1,
-			"imgUrl":"http://img1.qunarzz.com/sight/source/1510/6e/1ea71e2f04e.jpg_r_640x214_aa6f091d.jpg",
-			"link":"#",
-			"title":"秋高气爽去礼佛",
-			"tip":"秋风伴着美妙经声，品尝秋的另一番滋味"
 		}]
 	}
 }
