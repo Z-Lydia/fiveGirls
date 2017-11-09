@@ -23,7 +23,7 @@
 	</div>
 </template>
 <script>
-	require("../../../utills/iscroll-probe.js");
+	require("../../../utils/iscroll-probe.js");
 	export default {
 		data() {
 			return {

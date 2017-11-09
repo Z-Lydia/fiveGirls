@@ -17,13 +17,13 @@
 	export default {
 		data() {
 			return {
-					swiperOption: {
-							autoplay: 3000,
-							direction: 'horizontal',
-							autoHeight: true,
-							pagination: '.swiper-pagination',
-							observeParents: true
-					}
+				swiperOption: {
+					autoplay: 3000,
+					direction: 'horizontal',
+					autoHeight: true,
+					pagination: '.swiper-pagination',
+					observeParents: true
+				}
 			}
 		},
 		computed: {
@@ -32,8 +32,8 @@
 			}
 		},
 		components: {
-				swiper,
-				swiperSlide
+			swiper,
+			swiperSlide
 		}
 	}
 </script>
