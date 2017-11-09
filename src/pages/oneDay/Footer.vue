@@ -2,22 +2,22 @@
 	<div>
 		<div v-show="maskShow" class="mask"></div>
 		<div class="OneDay-footer-container">
-			<footer class="OneDay-footer">
-				<div @click="handleClassifyClick" :class="{selectIcon:isClassifySelect}" class="OneDay-classify OneDay-footer-select">
+			<footer class="OneDay-footer" @click="handleFooterClick">
+				<div @click="handleSwitchClick(1)" :class="{selectIcon:isSelect===1}" class="OneDay-classify OneDay-footer-select">
 					<span class="iconfont icon-quanbufenlei OneDay-footer-icon"></span>
 					<p class="OneDay-footer-tip">全部分类</p>
 				</div>
-				<div @click="handleFiltrteClick" :class="{selectIcon:isFiltrateSelect}" class="OneDay-filtrate OneDay-footer-select">
+				<div @click="handleSwitchClick(2)" :class="{selectIcon:isSelect===2}" class="OneDay-filtrate OneDay-footer-select">
 					<span class="iconfont icon-shaixuan OneDay-footer-icon"></span>
 					<p class="OneDay-footer-tip">筛选</p>
 				</div>
-				<div @click="handleSortClick" :class="{selectIcon:isSortSelect}" class="OneDay-sort OneDay-footer-select">
+				<div @click="handleSwitchClick(3)" :class="{selectIcon:isSelect===3}" class="OneDay-sort OneDay-footer-select">
 					<span class="iconfont icon-jiage OneDay-footer-icon"></span>
 					<p class="OneDay-footer-tip">推荐排序</p>
 				</div>
 			</footer>
 			<div v-show="contentShow" class="oneDay-footer-content">
-				<div v-if="footerShow===1" claass="OneDay-classify-content">
+				<div v-if="footerShow===1">
 					<div class="OneDay-classify-left">
 						<ul class="OneDay-classify-list">
 							<li class="OneDay-classify-listItem" v-for="item in classifyArr">{{item[0]}}<span>{{item[1]}}</span></li>
@@ -29,23 +29,27 @@
 				<div v-else-if="footerShow===2" class="OneDay-filtrate-content">
 					<div class="OneDay-filtrate-left">
 						<ul class="OneDay-filtrate-list">
-							<li @click="handleEndClick" :class="{select:isEndSelect}" class="OneDay-filtrate-listItem">目的地</li>
-							<li @click="handleStartClick" :class="{select:isStartSelect}" class="OneDay-filtrate-listItem">出发地</li>
+							<li @click="handleChooseAreaClick('a')" :class="{select:isChooseArea==='a'}" class="OneDay-filtrate-listItem">目的地</li>
+							<li @click="handleChooseAreaClick('b')" :class="{select:isChooseArea==='b'}" class="OneDay-filtrate-listItem">出发地</li>
 						</ul>
 					</div>
 					<div class="OneDay-filtrate-right">
 						<ul v-if="siteshow==='a'" class="end">
-							<li class="OneDay-filtrate-listItem site-list" v-for="item in EndArr">{{item}}</li>
+							<li @click="handleClose" class="OneDay-filtrate-listItem site-list" v-for="item in EndArr">{{item}}</li>
 						</ul>
 						<ul v-else class="start">
-							<li class="OneDay-filtrate-listItem site-list" v-for="item in startArr">{{item}}</li>
+							<li @click="handleClose" class="OneDay-filtrate-listItem site-list" v-for="item in startArr">{{item}}</li>
 						</ul>
 					</div>
 				</div>
 				<div v-else-if="footerShow===3" class="OneDay-sort-content">
-					<ul class="sort-list">
-						<li class="sort-listItem" v-for="(item,index) in sortArr" :index="index" :class="{selectIcon:ind===index}" @click="handleSelect(index)">{{item}}</li>
-					</ul>
+					<div id="wrapper">
+						<div id="scroller">
+							<ul class="sort-list">
+								<li class="sort-listItem" v-for="(item,index) in sortArr" :index="index" :class="{selectIcon:ind===index}" @click="handleSelect(index)">{{item}}</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>	
 	  	</div>
@@ -53,84 +57,72 @@
 </template>
 
 <script>
+
+	require( '../../utils/iscroll-probe.js' );
+
 	export default {
 		data() {
 			const classifyArr = [["全部分类","173"],["一日游","149"],["文化古迹","12"],["城市观光","4"],["展馆","3"],["交通","2"],["自然风光","1"],["餐饮","1"],["温泉","1"]];
 			const EndArr = ["全部目的地","北京","天津","唐山","保定","承德"];
 			const startArr = ["全部出发地","北京"];
-			const sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热"];
+			const sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热","  "];
 			return {
 				maskShow:false,
 				classifyArr,
 				footerShow:2,
 				EndArr,
 				startArr,
-				siteshow:'a',
-				isEndSelect:true,
-				isStartSelect:false,
-				contentShow:false,
 				sortArr,
-				isClassifySelect:false,
-				isFiltrateSelect:false,
-				isSortSelect:false,
+				siteshow:'a',
+				contentShow:false,
+				isSelect:'',
+				isChooseArea:'a',
 				ind:0
 			}
 		},
 		methods:{
-			handleEndClick:function(){
-				this.siteshow = 'a';
-				this.isEndSelect = true;
-				this.isStartSelect = false;
+			handleChooseAreaClick(n) {
+				this.isChooseArea = n;
+				this.siteshow = n;
 			},
-			handleStartClick:function(){
-				this.siteshow = 'b';
-				this.isEndSelect = false;
-				this.isStartSelect = true;
-			},
-			handleClassifyClick:function(){
-				if( this.contentShow ){
-					
-				}else{
-					this.contentShow = !this.contentShow;
-					this.maskShow = !this.maskShow
-				}
-				this.footerShow = 1;
-				this.isClassifySelect = true;
-				this.isFiltrateSelect = false;
-				this.isSortSelect = false;
-			},
-			handleFiltrteClick:function(){
-				if( this.contentShow ){
 
-				}else{
-					this.contentShow = !this.contentShow;
-					this.maskShow = !this.maskShow
-				}
-				this.footerShow = 2;
-				this.isClassifySelect = false;
-				this.isFiltrateSelect = true;
-				this.isSortSelect = false;
+			handleFooterClick() {
+				this.contentShow = true;
+				this.maskShow = true;
 			},
-			handleSortClick:function(){
-				if( this.contentShow ){
-					
-				}else{
-					this.contentShow = !this.contentShow;
-					this.maskShow = !this.maskShow
-				}
-				this.footerShow = 3;
-				this.isClassifySelect = false;
-				this.isFiltrateSelect = false;
-				this.isSortSelect = true;
+
+			handleSwitchClick(n) {
+				this.footerShow = n;
+				this.isSelect = n;
 			},
-			handleSelect:function(index){
+
+			handleSelect(index) {
 				this.ind = index;
+				this.contentShow = false;
+				this.maskShow = false;
+			},
+
+			handleClose(){
+				this.contentShow = false;
+				this.maskShow = false;
 			}
+		},
+
+		mounted() {
+			setTimeout( () =>{
+				this.myScroll = new IScroll('#wrapper', { probeType: 3, mouseWheel: true });
+			},2000 )
+			
 		}
 	}
 </script>
 
-<style>
+<style scoped>
+	#wrapper {
+		height:5.28rem;
+ 		background: #fff;
+		overflow: hidden;
+	}
 	.mask{
 		height: 100%;
 		width: 100%;
@@ -184,16 +176,11 @@
 	    width: 100%;
 	    background: #fff;
 	    height: 5.28rem;
-	    //border-top: .002rem solid #eaeaea;
 	    overflow: auto;
-	}
-	.OneDay-classify-content{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
 	}
 	.OneDay-classify-left{
 		width: 40%;	
+		float: left;
 	}
 	.OneDay-classify-list{
 		background: #f4f5f6;
@@ -245,13 +232,20 @@
 	.sort-list{
 		width: 100%;
 		text-align: center;
+		background: #fff;
 	}
 	.sort-listItem{
 		padding: .24rem .1rem;
 	    color: #212121;
 	    font-size: .28rem;
 	    line-height: .4rem;
-	    border-bottom:.001rem solid #e4e6e8
+	    border-top:.001rem solid #e4e6e8
+	}
+	.sort-listItem:first-child{
+		border-top:none;
+	}
+	.sort-listItem:last-child{
+		border-top:none;
 	}
 	.selectIcon{
 		color: #00afc7;
