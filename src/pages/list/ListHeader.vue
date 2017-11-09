@@ -1,6 +1,6 @@
 <template>
 	<header class="header">
-		<div class="header-left iconfont icon-return"></div>
+		<div class="header-left iconfont icon-return" @click="handlelistBackClick"></div>
 		<div class="header-title">
 			北京
 		</div>
@@ -12,7 +12,11 @@
 
 <script>
 	export default{
-		
+		methods: {
+			handlelistBackClick: function(){
+				this.$router.go(-1);
+			}
+		}
 	}
 </script>
 

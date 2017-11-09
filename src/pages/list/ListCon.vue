@@ -1,339 +1,48 @@
 <template>
 	<div class="list">
 		<div class="list-container">
-			<ul>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_110x110_fac6a6cd.jpg" alt="故宫" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">故宫(5A)</h3>
-								<span class="list-hot">热</span>
-								<span class="list-price">¥<em>20</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
+			<div>
+				<div>
+					<ul>
+						<li class="list-con" v-for="item in listInfo" :key="item.id">
+							<div>
+								<div class="list-top">
+									<div class="list-img-con">
+										<img :src="item.imgUrl" alt="故宫" class="list-img">
+										<span class="list-today" v-if="item.listtoday===true">
+									<span class="list-today-act" >可订今日</span>
+										</span>
+									</div>
+									<div class="list-right">
+										<h3 class="list-title">{{item.title}}</h3>
+										<span class="list-hot" v-if="item.hot===true">热</span>
+										<span class="list-price">{{item.pricecon}}<em>{{item.price}}</em>
+									<span class="list-price-after">&nbsp;{{item.priceafter}}</span>
+										</span>
+										<div class="list-comments">
+											<span class="comments-con">
 									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">5167评论</span>
+											</span>
+											<span class="list-totalnum">{{item.totalnum}}</span>
+										</div>
+										<div class="list-location">
+											<span>{{item.position}}</span>
+										</div>
+									</div>
 								</div>
-								<div class="list-location">
-									<span>北京·东城区</span>
+								<div class="list-ticket list-border-top">
+									<h4 class="list-ticket-name">{{item.ticketday}}</h4>
+									<span class="list-ticket-qunarprice">{{item.pricecon}}<em>{{item.ticketprice}}</em></span>
 								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">【当日票】故宫成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>39.9</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">【上午场】故宫成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>39.9</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_110x110_684eb80e.jpg" alt="八达岭长城" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">八达岭长城(5A)</h3>
-								<span class="list-hot">热</span>
-								<span class="list-price">¥<em>25</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">22522评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·延安县</span>
+								<div class="list-ticket">
+									<h4 class="list-ticket-name">{{item.ticket}}</h4>
+									<span class="list-ticket-qunarprice">{{item.pricecon}}<em>{{item.preferentialprice}}</em></span>
 								</div>
 							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">八达岭长城门票+空中索道往返成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>175</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">八达岭长城门票+空中索道往返学生/老人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>157.5</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1505/d2/d274c92de14c93da.water.jpg_110x110_d9d85877.jpg" alt="颐和园" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">颐和园(5A)</h3>
-								<span class="list-hot">热</span>
-								<span class="list-price">¥<em>22.9</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">21031评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·海淀区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">颐和园+园中园成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>48.9</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">颐和园+园中园学生/老人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>25</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1508/a5/4003f9dd7bebf61eccbf64046e26d487.water.jpg_110x110_e23a9143.jpg" alt="欢乐谷" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">北京欢乐谷(4A)</h3>
-								<span class="list-price">¥<em>28</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">47984评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·朝阳区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">【活动票】北京欢乐谷金面王朝演出成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>48.9</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">【活动票】北京欢乐谷日场成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>25</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1501/f4/f467729126949c3a.water.jpg_110x110_2c172ba2.jpg" alt="天安门" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">天安门广场</h3>
-								<span class="list-price">¥<em>20</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">15936评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·东城区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">【当日票】故宫成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>48.9</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">故宫+珍宝馆+钟表馆（成人票)</h4>
-							<span class="list-ticket-qunarprice">¥<em>25</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1410/ee/5140b8da5ef82cad730c0810fa81371f.water.jpg_110x110_d312e77c.jpg" alt="坡峰岭" class="list-img">
-
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">坡峰岭</h3>
-								<span class="list-price">¥<em>44.9</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">4017评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·房山区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">【活动票】坡峰岭景区红叶节门票</h4>
-							<span class="list-ticket-qunarprice">¥<em>46</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">坡峰岭门票</h4>
-							<span class="list-ticket-qunarprice">¥<em>45</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1505/f5/f5f45e1a83537bcb.water.jpg_110x110_4c72dbfd.jpg" alt="圆明园" class="list-img">
-								<span class="list-today">
-									<span class="list-today-act">可订今日</span>
-								</span>
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">圆明园(4A)</h3>
-								<span class="list-price">¥<em>25</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">5167评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·海淀区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">圆明园成人票（含大水法遗址、迷宫、全景沙盘)</h4>
-							<span class="list-ticket-qunarprice">¥<em>116.1</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">圆明园导览器（中文）</h4>
-							<span class="list-ticket-qunarprice">¥<em>79</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/201403/07/52906a98924b5ab7c47b6119a074a8ad.jpg_110x110_adb49d10.jpg" alt="玉渡山" class="list-img">
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">玉渡山</h3>
-								<span class="list-price">¥<em>51.9</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">288评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·延安县</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">玉渡山门票</h4>
-							<span class="list-ticket-qunarprice">¥<em>51.9</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1707/2a/2a0adbeebf6d18bba3.water.jpg_110x110_444ce846.jpg" alt="北京杜莎夫人蜡像馆" class="list-img">
-								<span class="list-today">
-									<span class="list-today-act">可订今日</span>
-								</span>
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">北京杜莎夫人蜡像馆</h3>
-								<span class="list-price">¥<em>84.2</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">5167评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·前门大街</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">北京杜莎夫人蜡像馆成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>116.1</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">北京杜莎夫人蜡像馆学生票/老人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>79</em></span>
-						</div>
-					</div>
-				</li>
-				<li class="list-con">
-					<div>
-						<div class="list-top">
-							<div class="list-img-con">
-								<img src="http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_110x110_52cd713d.jpg" alt="北京野生动物园" class="list-img">
-							</div>
-							<div class="list-right">
-								<h3 class="list-title">北京野生动物园(4A)</h3>
-								<span class="list-price">¥<em>78.1</em>
-									<span class="list-price-after">&nbsp;起</span>
-								</span>
-								<div class="list-comments">
-									<span class="comments-con">
-									<span class="iconfont icon-star" ></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span><span class="iconfont icon-star"></span>
-									</span>
-									<span class="list-totalnum">6847评论</span>
-								</div>
-								<div class="list-location">
-									<span>北京·大兴区</span>
-								</div>
-							</div>
-						</div>
-						<div class="list-ticket list-border-top">
-							<h4 class="list-ticket-name">北京野生动物园成人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>116.1</em></span>
-						</div>
-						<div class="list-ticket">
-							<h4 class="list-ticket-name">北京野生动物园学生票/老人票</h4>
-							<span class="list-ticket-qunarprice">¥<em>79</em></span>
-						</div>
-					</div>
-				</li>
-			</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 		<div class="list-moreinfo">
 			<div>
@@ -350,7 +59,11 @@
 
 <script>
 	export default {
-
+		computed: {
+			listInfo() {
+				return this.$store.state.list.listInfo;
+			}
+		}
 	}
 </script>
 
@@ -358,12 +71,10 @@
 	.list {
 		background: #f5f5f5
 	}
-	
 	.list-container {
 		color: #212121;
 		font-size: .28rem;
 	}
-	
 	.list-con {
 		margin-bottom: .2rem;
 		background: #FFFFFF;
@@ -433,6 +144,7 @@
 	}
 	
 	.list-hot {
+		overflow: hidden;
 		display: inline-block;
 		margin-left: .06rem;
 		width: .3rem;
@@ -462,12 +174,16 @@
 	}
 	
 	.list-comments {
+		position: absolute;
+		top: .3rem;
 		margin-top: .38rem;
+		width: 100%;
 		height: .64rem;
 		line-height: .64rem;
 	}
 	
 	.icon-star {
+		font-size: 0.24rem;
 		color: #00BCD4;
 	}
 	
