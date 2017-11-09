@@ -31,7 +31,7 @@
 	<div class="list-moreinfoCon">
 		<div class="list-pageCon"> 
 			<div class="list-pagination">
-				<a href="javascript:void(0);" class="list-paginationbtn">上一页</a><span class="list-page-num">1 / 15</span><a href="javascript:void(0);" class="list-paginationbtn list-paginationnext">下一页</a>
+				<a href="javascript:void(0);" class="list-paginationbtn">上一页</a><span class="list-page-num">1 / 1</span><a href="javascript:void(0);" class="list-paginationbtn list-paginationnext">下一页</a>
 			</div>
 			<div class="list-page-text">去哪儿门票</div>
 		</div>

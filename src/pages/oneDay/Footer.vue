@@ -58,7 +58,7 @@
 
 <script>
 
-	require( '../../utils/iscroll-probe.js' );
+	require ('../../utils/iscroll-probe.js');
 
 	export default {
 		data() {
