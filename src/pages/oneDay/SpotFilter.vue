@@ -58,7 +58,6 @@ export default {
 		white-space: nowrap;
 	}
 	.spot-filter-list{
-		/* width: 100rem; */
 		display: flex;
 		white-space: nowrap;
 		height: .68rem;
