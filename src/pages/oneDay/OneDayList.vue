@@ -69,11 +69,10 @@
 				
 		},
 		updated(){
-				setTimeout(()=>{
-					this.myScroll.refresh();
-					this.showLoading=false;
-				},500);
-				
+			setTimeout(()=>{
+				this.myScroll.refresh();
+				this.showLoading=false;
+			},500);
 				
 		}
 		
@@ -81,7 +80,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	#wrapper{
 		height: 465px;
 		overflow: hidden;

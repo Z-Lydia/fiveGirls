@@ -65,7 +65,7 @@
 			const classifyArr = [["全部分类","173"],["一日游","149"],["文化古迹","12"],["城市观光","4"],["展馆","3"],["交通","2"],["自然风光","1"],["餐饮","1"],["温泉","1"]];
 			const EndArr = ["全部目的地","北京","天津","唐山","保定","承德"];
 			const startArr = ["全部出发地","北京"];
-			const sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热","  "];
+			const sortArr = ["排序推荐","销量最高","价格最高","价格最低","热门评论","本周最热","  "," "];
 			return {
 				maskShow:false,
 				classifyArr,
@@ -100,18 +100,22 @@
 				this.ind = index;
 				this.contentShow = false;
 				this.maskShow = false;
+				this.isSelect='';
 			},
 
 			handleClose(){
 				this.contentShow = false;
 				this.maskShow = false;
+				this.isSelect='';
 			}
 		},
 
 		mounted() {
 			setTimeout( () =>{
 				this.myScroll = new IScroll('#wrapper', { probeType: 3, mouseWheel: true });
-			},2000 )
+				console.log( this.myScroll);
+			},1000 )
+
 			
 		}
 	}
