@@ -37,9 +37,9 @@
 		</div>
 	</div>
 </div>
+
 </template>
 <script>
-
 	require ('../../utils/iscroll-probe.js');
 	
 	export default{
