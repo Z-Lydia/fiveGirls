@@ -9,7 +9,7 @@
 				<div class="All-categories-list-con">
 					<div id="wrapper">
 						<div id="scroller">
-							<div v-if="showloading_down">松开加载</div>
+							<div v-if="showloading_down" class="loose_loading">松开加载</div>
 							<ul class="All-categories-con">
 								<li>
 									<span class="iconfont icon-yundong"></span>
@@ -57,7 +57,7 @@
 									<em>470</em>
 								</li>
 							</ul>
-							<div v-if="showloading_up">松开加载</div>
+							<div v-if="showloading_up" class="loose_loading">松开加载</div>
 						</div>
 					</div>
 				</div>
@@ -115,7 +115,6 @@
 					this.glassshow = false;
 				}
 			},
-
 			handleScrollChange: function() {
 				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 				if(this.scrollTop >= 50) {
@@ -124,30 +123,26 @@
 				} else {
 					this.$refs.det.style.position = "";
 				}
-			},
-			handlescroll: function(){
-				if(this.myScroll.y > 85) {
-					this.showloading_down = true;
-				}
-				if(this.myScroll.y < -150) {
-					this.showloading_up = true;
-				}
 			}
-
 		},
 		mounted() {
 			window.addEventListener('scroll', this.handleScrollChange);
-			setTimeout(()=>{
-				this.myScroll = new IScroll("#wrapper",{ mouseWheel: true });
-				this.myScroll.on("scroll",this.handlescroll.bind(this));
-			});	
+				this.myScroll = new IScroll("#wrapper",{ mouseWheel: true ,probeType: 2});
+				this.myScroll.on("scroll",()=>{
+					if(this.myScroll.y > 85) {
+						this.showloading_down = true;
+					}
+					if(this.myScroll.y < -150) {
+						this.showloading_up = true;
+					}
+				});
 		},
 		updated() {
 			setTimeout(()=>{
 				this.showloading_up = false;
 				this.showloading_down = false;
 				this.myScroll.refresh();
-			},1000);
+			},500);
 		}
 		
 	}
@@ -155,8 +150,14 @@
 
 <style scoped>
 	#wrapper{
+		width: 50%;
 		height:4.8rem;
+		border-right: 1px solid #ccc;
 		overflow: hidden;
+		background: #fff;
+	}
+	#scroller{
+		width: 100%;
 	}
 	.list-nav-container {
 		width: 100%;
@@ -164,8 +165,7 @@
 		height: .9rem;
 		line-height: .9rem;
 		border-bottom: 1px solid #999;
-		background: #fff;
-		z-index: 67;
+		z-index: 10;
 	}
 	
 	.list-nav-container div {
@@ -175,7 +175,6 @@
 		background: #fff;
 		z-index: 66;
 	}
-	
 	.list-nav-container div::after {
 		content: "";
 		position: absolute;
@@ -185,37 +184,30 @@
 		height: 0;
 		border: 5px solid transparent;
 		border-bottom-Color: #ccc;
-	}
-	
+	}	
 	.All-categories {
 		box-sizing: border-box;
 		border-right: 1px solid #ccc;
-	}
-	
+	}	
 	.list-nav-child-list {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		z-index: 66;
-	}
-	
+	}	
 	.All-categories-list-con {
 		width: 100%;
 		height: 4.8rem;
 		overflow: auto;
-		background: #fff;
-	}
-	
+		background: #f5f5f5;
+	}	
 	.All-categories-con {
-		width: 50%;
-		height: auto;
+		width: 100%;
 		box-sizing: border-box;
-		border-right: 1px solid #ccc;
-		background: #fff;
 		z-index: 100;
 	}
-	.loose-loading{
-		padding: .6rem 0;
+	.loose_loading{
+		padding: .2rem 0;
 		width: 100%;
 		text-align: center;
 	}
@@ -235,8 +227,7 @@
 		width: .3rem;
 		height: .3rem;
 		float: left;
-	}
-	
+	}	
 	.All-categories-con li a {
 		display: inline-block;
 		color: #333;
@@ -246,8 +237,7 @@
 		text-overflow: ellipsis;
 		float: left;
 		padding-left: .3rem;
-	}
-	
+	}	
 	.All-categories-con li em {
 		color: #999;
 		float: right;
@@ -255,22 +245,19 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}
-	
+	}	
 	.buzz-high-list-con {
 		width: 100%;
 		height: 2.4rem;
 		background: #fff;
 		z-index: 100;
-	}
-	
+	}	
 	.buzz-high-list-con ul {
 		width: 100%;
 		height: 100%;
 		background: #fff;
 		border-top: 1px solid #999;
-	}
-	
+	}	
 	.buzz-high-list-con ul li {
 		width: 100%;
 		height: .8rem;
@@ -279,12 +266,10 @@
 		text-align: center;
 		color: #333;
 		font-size: .24rem;
-	}
-	
+	}	
 	.buzz-high-list-con ul li:last-child {
 		border-bottom: none;
 	}
-	
 	.NavClick-glass {
 		position: fixed;
 		top: 0;
@@ -293,12 +278,10 @@
 		bottom: 0;
 		background: rgba(0, 0, 0, .3);
 		z-index: 1;
-	}
-	
+	}	
 	.ClickchangeStyle {
 		color: #00bcd4;
-	}
-	
+	}	
 	.list-nav-container .ClickchangeStyle::after {
 		content: "";
 		position: absolute;
@@ -308,8 +291,7 @@
 		height: 0;
 		border: 5px solid transparent;
 		border-top-Color: #00bcd4;
-	}
-	
+	}	
 	.iconfont {
 		color: #00bcd4;
 	}
