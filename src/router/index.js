@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/Home'
-import List from '@/pages/list/List'
 import OneDay from '@/pages/oneDay/OneDay'
+import SearchList from '@/pages/searchList/SearchList'
+
 
 Vue.use(Router)//Vue使用Vue-router
 
@@ -15,7 +16,7 @@ export default new Router({
     },{
       	path: '/Searchlist',
       	name: 'List',
-      	component: List
+      	component: SearchList
   	},{
     	path:'/Oneday',
     	name:'OneDay',
