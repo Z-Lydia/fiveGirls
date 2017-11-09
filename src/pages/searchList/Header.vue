@@ -1,6 +1,6 @@
 <template>
   	<header class="header">
-		<div class="header-left iconfont icon-return"></div>
+		<div @click = "handleReturnClick" class="header-left iconfont icon-return"></div>
 		<div class="header-title">
 			<input placeholder="请输入城市或景点" />
 		</div>
@@ -11,7 +11,15 @@
 </template>
 
 <script>
-export default {}
+	export default {
+
+		methods:{
+
+			handleReturnClick() {
+				this.$router.go( -1 );
+			}
+		}
+	}
 </script>
 
 <style scoped>

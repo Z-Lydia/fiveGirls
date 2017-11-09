@@ -132,7 +132,7 @@
 	.history-content{
 	    height: 1.24rem;
 	    width: 100%;
-	    overflow-y: hidden;
+	    overflow: auto;
 	    background-color: #fff;
 	    border-top: 1px solid #dce5e7;
 	    border-bottom: 1px solid #dce5e7;
