@@ -202,7 +202,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	.mp-border-bottom {
 		height: .2rem;
 		background: #F5F5F5;

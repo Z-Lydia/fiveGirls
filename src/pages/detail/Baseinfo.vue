@@ -34,7 +34,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	.baseinfo-container {
 		background: #f5f5f5;
 	}
