@@ -113,7 +113,6 @@
 		mounted() {
 			setTimeout( () =>{
 				this.myScroll = new IScroll('#wrapper', { probeType: 3, mouseWheel: true });
-				console.log( this.myScroll);
 			},1000 )
 
 			

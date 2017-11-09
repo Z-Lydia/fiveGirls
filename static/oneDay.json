@@ -131,6 +131,20 @@
 			"listPrice":79,
 			"listPriceflag":"起",
 			"listText":"已售2061"
+		}],
+		"refreshonedayInfo":[{
+			"id":1,
+			"imgUrl":"http://img1.qunarzz.com/p/tts2/1707/43/8250a273d1946502.jpg_110x110_532f0563.jpg",
+			"link":"#",
+			"text":"可订明日",
+			"title":"[北京出发]天安门＋故宫【赠送珍宝馆】＋八达岭长城＋鸟巢·水立方一日游",
+			"tagitemlight":"北京出发",
+			"tagitem":"无自费",
+			"tagitem1":"无购物",
+			"priceinfo":"￥",
+			"listPrice":208,
+			"listPriceflag":"起",
+			"listText":"已售953"
 		}]
 	}
 }

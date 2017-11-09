@@ -75,6 +75,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		padding: .2rem .1rem 0 .1rem;
+		color: #000;
 	}
 	
 	.category-img-container img {

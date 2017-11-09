@@ -23,7 +23,7 @@ export default {
 		"OneDay-footer": FooterComponent
 	},
 	mounted() {
-		if(this.$store.getters.shouldGetData){
+		if(this.$store.getters.shouldGetOneDayInfo){
 			this.$store.dispatch("getOneDayInfo");
 		}
 		

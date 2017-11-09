@@ -56,13 +56,11 @@
 		mounted(){
 				this.myScroll=new IScroll("#wrapper",{probeType:2,mouseWheel:true});
 				this.myScroll.on("scroll",()=>{
-					if(this.myScroll.y<(-this.onedayInfo.length*95+450)){
+					if(this.myScroll.y<-100){
 						this.showLoading=true;
-						this.$store.commit("refreshInfo");
 					}
 					if(this.myScroll.y>50){
 						this.showLoading=true;
-						this.$store.commit("refreshInfo");
 					}
 					
 				})

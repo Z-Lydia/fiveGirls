@@ -25,7 +25,7 @@ export  default{
 		}
 	},
 	getters:{
-		shouldGetData(state){
+		shouldGetOneDayInfo(state){
 			if(!state.onedayInfo.length){
 				return true
 			}else{
