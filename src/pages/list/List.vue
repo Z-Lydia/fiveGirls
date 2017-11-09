@@ -1,30 +1,33 @@
 <template>
-	<div class="list-page">
+	<div>
 		<list-header />
-		<list-main />
+		<list-nav />
+		<list-con />
 	</div>
-  	
 </template>
 
 <script>
-import HeaderComponent from "./Header";
-import MainComponent from "./Main";
-
-export default {
-	components: {
-		"list-header": HeaderComponent,
-		"list-main":MainComponent
+	import ListHeaderComponent from "./ListHeader";
+	import listNavComponent from "./listnav";
+	import ListConComponent from "./ListCon";
+	
+	
+	export default {
+		components: {
+			"list-header": ListHeaderComponent,
+			"list-nav": listNavComponent,
+			"list-con": ListConComponent
+		},
+		methods: {
+		},
+		mounted() {
+			if(!this.$store.state.list.listInfo.length){
+				this.$store.dispatch("getlistInfo");
+			}
+			
+		}
 	}
-}
 </script>
 
 <style>
-	.list-page{
-		position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    min-height: 100%;
-	    background: #f5f5f5;
-	}
 </style>

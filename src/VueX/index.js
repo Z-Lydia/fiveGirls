@@ -3,12 +3,14 @@ import Vuex from 'vuex'
 
 import home from '../pages/home/module.js'
 import oneDay from '../pages/oneDay/module.js'
+import list from '../pages/list/module.js'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	modules:{
 		home:home,
-		oneDay:oneDay
+		oneDay:oneDay,
+		list: list
 	}
 })
