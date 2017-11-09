@@ -1,29 +1,32 @@
 <template>
 <div class="list-page">
-	<div>
-		<ul>
-			<li class="list-item"  v-for="item in onedayInfo" :key="item.id">
-				<div class="list-img-con">
-					<img :src="item.imgUrl" class="list-img">
-					<span class="list-bookingflag">
-						<span class="list-bookingtext">{{item.text}}</span>
-					</span>
-				</div>
-				<div class="list-productinfo">
-					<h4 class="list-productname">{{item.title}}</h4>
-					<div class="list-taglist">
-						<span class="list-tagitemlight">{{item.tagitemlight}}</span>
-						<span class="list-tagitem">{{item.tagitem}}</span>
-						<span class="list-tagitem">{{item.tagitem1}}</span>
+	<div id="wrapper">
+		<div id="scroller">
+			<ul>
+				<li v-if="showLoading" class="listShowLoading">正在加载</li>
+				<li class="list-item"  v-for="item in onedayInfo" :key="item.id">
+					<div class="list-img-con">
+						<img :src="item.imgUrl" class="list-img">
+						<span class="list-bookingflag">
+							<span class="list-bookingtext">{{item.text}}</span>
+						</span>
 					</div>
-					<div class="list-priceinfo"><span class="list-qunarprice">{{item.priceinfo}}</span><em class="list-price">{{item.listPrice}}</em><span class="list-priceflag">{{item.listPriceflag}}</span>
+					<div class="list-productinfo">
+						<h4 class="list-productname">{{item.title}}</h4>
+						<div class="list-taglist">
+							<span class="list-tagitemlight">{{item.tagitemlight}}</span>
+							<span class="list-tagitem">{{item.tagitem}}</span>
+							<span class="list-tagitem">{{item.tagitem1}}</span>
+						</div>
+						<div class="list-priceinfo"><span class="list-qunarprice">{{item.priceinfo}}</span><em class="list-price">{{item.listPrice}}</em><span class="list-priceflag">{{item.listPriceflag}}</span>
+						</div>
+						<div class="list-moreinfo">
+							<span class="list-text">{{item.listText}}</span>
+						</div>
 					</div>
-					<div class="list-moreinfo">
-						<span class="list-text">{{item.listText}}</span>
-					</div>
-				</div>
-			</li>
-		</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<div class="list-moreinfoCon">
 		<div class="list-pageCon"> 
@@ -37,17 +40,54 @@
 </template>
 
 <script>
+	require ('../../utils/iscroll-probe.js');
 	export default{
+		data (){
+			return{
+				showLoading:false
+			}
+		},
 		computed:{
 			onedayInfo(){
 				return this.$store.state.oneDay.onedayInfo
 			}
+		},
+		mounted(){
+				this.myScroll=new IScroll("#wrapper",{probeType:2,mouseWheel:true});
+				this.myScroll.on("scroll",()=>{
+					if(this.myScroll.y<(-this.onedayInfo.length*95+450)){
+						this.showLoading=true;
+						this.$store.commit("refreshInfo");
+					}
+					if(this.myScroll.y>50){
+						this.showLoading=true;
+						this.$store.commit("refreshInfo");
+					}
+					
+				})
+				
+		},
+		updated(){
+				setTimeout(()=>{
+					this.myScroll.refresh();
+					this.showLoading=false;
+				},500);
+				
+				
 		}
+		
 			
 	}
 </script>
 
 <style>
+	#wrapper{
+		height: 465px;
+		overflow: hidden;
+	}
+	.listShowLoading{
+		text-align: center;
+	}
 	.list-page{
 		background:#f5f5f5;
 	}

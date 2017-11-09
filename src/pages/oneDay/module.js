@@ -19,6 +19,9 @@ export  default{
 	mutations:{
 		changeOneDayInfo(state,data) {
 			state.onedayInfo=data
+		},
+		refreshInfo(state,data){
+			state.onedayInfo.push(...state.onedayInfo);
 		}
 	},
 	getters:{
