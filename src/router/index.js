@@ -5,6 +5,7 @@ import OneDay from '@/pages/oneDay/OneDay'
 import SearchList from '@/pages/searchList/SearchList'
 import List from '@/pages/list/List'
 import City from '@/pages/cityList/CityList'
+import Detail from '@/pages/detail/Detail'
 
 Vue.use(Router)//Vue使用Vue-router
 
@@ -30,6 +31,10 @@ export default new Router({
         path: '/city',
         name: 'City',
         component: City
+    },{
+    	path:'/detail',
+    	name:'Detail',
+    	component: Detail
     }
   ]
 })

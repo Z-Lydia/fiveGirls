@@ -18,7 +18,7 @@ export default {
 						context.commit( "changeData",data );
 					}
 				})
-				.catch(()=>{
+				.catch((err)=>{
 					console.log(err);
 				})
 		}
