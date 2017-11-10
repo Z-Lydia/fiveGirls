@@ -78,7 +78,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.history-title{
 	    height: .64rem;
 	    line-height: .64rem;

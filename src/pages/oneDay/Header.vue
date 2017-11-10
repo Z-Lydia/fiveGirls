@@ -2,7 +2,7 @@
 	<header class="header">
 		<div @click="handleReturnClick" class="header-left iconfont icon-return"></div>
 		<div class="header-title">
-			<input placeholder="请输入城市或景点" />
+			<input class="headerr-title-input" placeholder="请输入城市或景点" />
 		</div>
 		<div class="header-right">
 			<span>搜索</span>
@@ -45,9 +45,9 @@
 		padding-left: .2rem;
 		color: #999;
 	}
-	.header-title input{
+	.headerr-title-input{
 		border:none;
-		width:4.92rem
+		width:100%
 	}
 	.header-right{
 		float: right;

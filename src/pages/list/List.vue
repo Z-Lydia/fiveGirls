@@ -21,7 +21,7 @@
 		methods: {
 		},
 		mounted() {
-			if(!this.$store.state.list.listInfo.length){
+			if(this.$store.getters.shouldGetListData){
 				this.$store.dispatch("getlistInfo");
 			}
 			
@@ -29,5 +29,13 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	.list-page{
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    min-height: 100%;
+	    background: #f5f5f5;
+	}
 </style>

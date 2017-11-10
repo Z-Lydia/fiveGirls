@@ -37,7 +37,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	.swiper-img-container {
 		overflow: hidden;
 		width: 100%;

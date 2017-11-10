@@ -116,8 +116,8 @@
 				}
 			},
 			handleScrollChange: function() {
-				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-				if(this.scrollTop >= 50) {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				if(scrollTop >= 50) {
 					this.$refs.det.style.position = "fixed";
 					this.$refs.det.style.top = 0;
 				} else {

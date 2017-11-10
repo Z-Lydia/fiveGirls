@@ -93,7 +93,7 @@
 		position: absolute;
 		top: .8rem;
 		bottom: 0;
-		height: 11.13rem;
+		height: 8rem;
 		overflow: hidden;
 		background: #f5f5f5;
 	}

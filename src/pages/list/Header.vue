@@ -2,7 +2,7 @@
   	<header class="header">
 		<div class="header-left iconfont icon-return"></div>
 		<div class="header-title">
-			<input placeholder="请输入城市或景点" />
+			<input placeholder="请输入城市或景点" class="header-search"/>
 		</div>
 		<div class="header-right">
 			<span>搜索</span>
@@ -38,9 +38,9 @@ export default {}
 		padding-left: .2rem;
 		color: #999;
 	}
-	.header-title input{
+	.header-search{
 		border:none;
-		width:4.92rem
+		width:100%;
 	}
 	.header-right{
 		float: right;

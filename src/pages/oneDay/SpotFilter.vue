@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 	.spot-container{
 		height: .68rem;
 		background: #e5e7e8;
