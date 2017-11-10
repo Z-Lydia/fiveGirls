@@ -45,8 +45,6 @@
         		const name = this.target.innerHTML
         		if( document.documentElement.scrollTop ){
         			document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44
-        		}else if(window.pageYOffset){
-        			window.pageYOffset = this.$refs[name][0].offsetTop-44
         		}else{
         			document.body.scrollTop = this.$refs[name][0].offsetTop-44;
         		}
@@ -64,8 +62,6 @@
     	 				const name = this.foreignCity[i][0];
     					if( document.documentElement.scrollTop ){
 		        			document.documentElement.scrollTop = this.$refs[name][0].offsetTop-44
-		        		}else if(window.pageYOffset){
-		        			window.pageYOffset = this.$refs[name][0].offsetTop-44
 		        		}else{
 		        			document.body.scrollTop = this.$refs[name][0].offsetTop-44;
 		        		}
